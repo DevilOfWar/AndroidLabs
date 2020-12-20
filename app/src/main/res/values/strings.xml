@@ -1,0 +1,20 @@
+<resources>
+    <string-array name="categories">
+        <item name="milk">Молочные продукты</item>
+        <item name="meat">Мясные продукты</item>
+        <item name="bread">Хлебобулочные изделия</item>
+    </string-array>
+    <string name="app_name">Lab2</string>
+    <string name="milk_info">Молоко, кефир, сыр, творог.</string>
+    <string name="meat_info">Говядина, свинина, конина, курятина.</string>
+    <string name="bread_info">Хлеб, батон, печенье, пирог, булки.</string>
+    <string name="TopAbiturient">Получить лучших Аббитуриентов</string>
+    <string name="AverageMarks">Список Аббитуриентов со средним баллом выше заданного</string>
+    <string name="BadAbiturient">Список Аббитуриентов с неудовлетворительными оценками</string>
+    <string name="Edit">Изменить Аббитуриента</string>
+    <string name="Delete">Удалить Аббитуриента</string>
+    <string name="Add">Добавить Аббитуриента</string>
+    <string name="ResetButton">Сбросить фильтр</string>
+    <string name="AbiturientCountField">Введите кол-во лучших абитуриентов</string>
+    <string name="MarkFilter">Введите граничную среднюю оценку</string>
+</resources>

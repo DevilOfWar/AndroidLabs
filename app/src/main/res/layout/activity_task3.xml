@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Task3">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-30dp"
+        tools:layout_editor_absoluteY="43dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/List"
+                android:layout_width="327dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/MarkFilter"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="@string/MarkFilter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/List" />
+
+            <EditText
+                android:id="@+id/abiturientCount"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="@string/AbiturientCountField"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MarkFilter" />
+
+            <Button
+                android:id="@+id/addObject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Add"
+                android:text="@string/Add"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/abiturientCount" />
+
+            <Button
+                android:id="@+id/DeleteObject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:onClick="Delete"
+                android:text="@string/Delete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addObject" />
+
+            <Button
+                android:id="@+id/EditObject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:onClick="Edit"
+                android:text="@string/Edit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DeleteObject" />
+
+            <Button
+                android:id="@+id/BadObject"
+                android:layout_width="240dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="31dp"
+                android:onClick="Bad"
+                android:text="@string/BadAbiturient"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EditObject" />
+
+            <Button
+                android:id="@+id/AverageGreater"
+                android:layout_width="239dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="30dp"
+                android:onClick="Average"
+                android:text="@string/AverageMarks"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/BadObject" />
+
+            <Button
+                android:id="@+id/BestObject"
+                android:layout_width="237dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="30dp"
+                android:onClick="Top"
+                android:text="@string/TopAbiturient"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/AverageGreater" />
+            <Button
+                android:id="@+id/Reset"
+                android:layout_width="237dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="30dp"
+                android:onClick="ResetFilter"
+                android:text="@string/ResetButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/BestObject" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
