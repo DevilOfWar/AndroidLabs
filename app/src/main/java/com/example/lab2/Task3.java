@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -58,7 +60,31 @@ public class Task3 extends AppCompatActivity {
         ListView listView = findViewById(R.id.List);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((parent, view, position, id) -> selectedId = position);
+        RadioButton badRadio = (RadioButton) findViewById(R.id.BadObject);
+        RadioButton averageRadio = (RadioButton) findViewById(R.id.AverageObject);
+        RadioButton bestRadio = (RadioButton) findViewById(R.id.BestObject);
+        badRadio.setOnClickListener(RadioListener);
+        averageRadio.setOnClickListener(RadioListener);
+        bestRadio.setOnClickListener(RadioListener);
     }
+
+    View.OnClickListener RadioListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RadioButton rb = (RadioButton)view;
+            switch (rb.getId()) {
+                case R.id.BadObject: Bad(view);
+                    break;
+                case R.id.AverageObject: Average(view);
+                    break;
+                case R.id.BestObject: Top(view);
+                    break;
+                default:
+                    break;
+                }
+        }
+    };
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -115,42 +141,67 @@ public class Task3 extends AppCompatActivity {
 
     public void Bad(View view)
     {
-        ResetFilter(findViewById(R.id.Reset));
-        double badMarkFilter = Double.parseDouble(((EditText)findViewById(R.id.MarkFilter)).getText().toString());
-        List<Abiturient> badList = Abiturient.Bad(badMarkFilter);
+        ResetFilter(view);
         backupList.clear();
         backupList.addAll(list);
-        adapter.clear();
-        adapter.addAll(badList);
-        adapter.notifyDataSetChanged();
+        try {
+            double badMarkFilter = Double.parseDouble(((EditText) findViewById(R.id.MarkFilter)).getText().toString());
+            List<Abiturient> badList = Abiturient.Bad(badMarkFilter);
+            adapter.clear();
+            adapter.addAll(badList);
+            adapter.notifyDataSetChanged();
+        }
+        catch (NumberFormatException e)
+        {
+            EditText errorText = (EditText) findViewById(R.id.MarkFilter);
+            errorText.setError("Введите необходимое кол-во лучших абитуриентов");
+        }
     }
 
     public void Average(View view)
     {
-        ResetFilter(findViewById(R.id.Reset));
-        double badMarkFilter = Double.parseDouble(((EditText)findViewById(R.id.MarkFilter)).getText().toString());
-        List<Abiturient> averageList = Abiturient.Average(badMarkFilter);
+        ResetFilter(view);
         backupList.clear();
         backupList.addAll(list);
-        adapter.clear();
-        adapter.addAll(averageList);
-        adapter.notifyDataSetChanged();
+        try {
+            double badMarkFilter = Double.parseDouble(((EditText) findViewById(R.id.MarkFilter)).getText().toString());
+            List<Abiturient> averageList = Abiturient.Average(badMarkFilter);
+            adapter.clear();
+            adapter.addAll(averageList);
+            adapter.notifyDataSetChanged();
+        }
+        catch (NumberFormatException e)
+        {
+            EditText errorText = (EditText) findViewById(R.id.MarkFilter);
+            errorText.setError("Введите необходимое кол-во лучших абитуриентов");
+        }
     }
 
     public void Top(View view)
     {
-        ResetFilter(findViewById(R.id.Reset));
+        ResetFilter(view);
         backupList.clear();
         backupList.addAll(list);
-        int abiturientCount = Integer.parseInt(((EditText)findViewById(R.id.abiturientCount)).getText().toString());
-        List<Abiturient> topList = Abiturient.Top(abiturientCount);
-        adapter.clear();
-        adapter.addAll(topList);
-        adapter.notifyDataSetChanged();
+        try {
+            int abiturientCount = Integer.parseInt(((EditText) findViewById(R.id.abiturientCount)).getText().toString());
+            List<Abiturient> topList = Abiturient.Top(abiturientCount);
+            adapter.clear();
+            adapter.addAll(topList);
+            adapter.notifyDataSetChanged();
+        }
+        catch (NumberFormatException e)
+        {
+            EditText errorText = (EditText) findViewById(R.id.abiturientCount);
+            errorText.setError("Введите необходимое кол-во лучших абитуриентов");
+        }
     }
 
     public void ResetFilter(View view)
     {
+        if (view == findViewById(R.id.Reset)) {
+            RadioGroup radio = (RadioGroup) findViewById(R.id.radioGroup);
+            radio.clearCheck();
+        }
         adapter.clear();
         adapter.addAll(backupList);
         adapter.notifyDataSetChanged();
