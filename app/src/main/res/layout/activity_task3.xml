@@ -79,35 +79,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/DeleteObject" />
 
-            <Button
-                android:id="@+id/BadObject"
-                android:layout_width="240dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="31dp"
-                android:onClick="Bad"
-                android:text="@string/BadAbiturient"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/EditObject" />
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-            <Button
-                android:id="@+id/AverageGreater"
-                android:layout_width="239dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="30dp"
-                android:onClick="Average"
-                android:text="@string/AverageMarks"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/BadObject" />
+                <RadioButton
+                    android:id="@+id/BestObject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/TopAbiturient" />
 
-            <Button
-                android:id="@+id/BestObject"
-                android:layout_width="237dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="30dp"
-                android:onClick="Top"
-                android:text="@string/TopAbiturient"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/AverageGreater" />
+                <RadioButton
+                    android:id="@+id/BadObject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/BadAbiturient" />
+
+                <RadioButton
+                    android:id="@+id/AverageObject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/AverageMarks" />
+            </RadioGroup>
+
             <Button
                 android:id="@+id/Reset"
                 android:layout_width="237dp"
@@ -116,7 +111,7 @@
                 android:onClick="ResetFilter"
                 android:text="@string/ResetButton"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/BestObject" />
+                app:layout_constraintTop_toBottomOf="@+id/RadioGroup" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
